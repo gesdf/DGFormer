@@ -1,0 +1,33 @@
+# Default configuration for DGFormer training
+
+# Model settings
+model:
+  name: DGFormer
+  num_classes: 10
+  embed_dim: 256
+  num_heads: 8
+  num_layers: 6
+
+# Training settings
+training:
+  batch_size: 32
+  num_epochs: 100
+  learning_rate: 0.0001
+  weight_decay: 0.0001
+  optimizer: adam
+  scheduler: cosine
+
+# Data settings
+data:
+  train_dir: ./data/train
+  val_dir: ./data/val
+  test_dir: ./data/test
+  num_workers: 4
+  image_size: 224
+
+# Logging
+logging:
+  log_dir: ./logs
+  save_dir: ./checkpoints
+  log_interval: 10
+  save_interval: 5
