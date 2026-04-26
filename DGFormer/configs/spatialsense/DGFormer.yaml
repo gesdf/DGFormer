@@ -1,0 +1,60 @@
+EXP:
+  MODEL_NAME: "DGFormer"
+  EXP_ID: "spatialsenseplus_DGFormer"
+
+DATALOADER:
+  dataset_name: "spatialsense"
+  datapath: "./data/spatial_sense/annots_spatialsenseplus.json"
+  # datapath: "./data/spatial_sense/annotations.json"
+  batch_size: 16
+  load_img: True
+  crop: False
+  norm_data: True
+  data_aug_shift: True
+  data_aug_color: True
+  predicate_dim: 9
+  object_dim: 3679
+  category_map_path: "./data/spatial_sense/category_map.json"
+  train_valid : False
+TRAIN:
+  num_epochs: 100
+  learning_rate: 1e-5
+  lr_decay_ratio : 0.5
+  l2: 1e-3
+  layer_decay: 0.75
+  optimizer: adamw
+  # scheduler: plateau
+  scheduler: cosine
+  # layer_decay: 1.0
+  early_stop : 10
+  patience : 5
+  warmup: 4
+
+  predicate_specific_training: False    
+  predicate_specific_start_epoch: 10     
+  predicate_specific_frequency: 1         
+  predicate_specific_batches: 30         
+  skip_normal_training: False              
+ 
+
+MODEL:
+  VISION_TRANSFORMER:
+    pretrained: "./data/pretrained_checkpoints/ibot_vit_base_patch16.pth"
+    readnet_d_hidden: 512
+    glove_path: "./data/glove.6B.300d.txt"
+    category_map_path: "./data/spatial_sense/category_map.json"
+    drop_rate: 0.
+    drop_path_rate: 0.
+    attn_drop_rate: 0.
+
+  RELATIVIT:
+    prompt_emb_pool: 'max-in-roi'
+    use_attn_mask: True
+    drop: 0.
+    readnet_dropout: 0.
+    use_resnet_fpn: True
+    feature_extractor_backbone: "resnet50"  
+    pretrained_path: "./data/pretrained_checkpoints/resnet50-0676ba61.pth"  
+    enable_spell_correction: True  
+    enable_compound_split: True  
+    word_mappings_path: "./data/word_mappings.json" 
