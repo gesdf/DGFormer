@@ -20,8 +20,6 @@ pip install -r requirements.txt
 ```
 ## Download SpatialSense, SpatialSense, and the IBOT-pretrained ViT backbone.
 
-Make sure you are in `DGFormer`, download.py can be used for downloading the SpatialSense,SpatialSense+, and the IBOT pretrained backbone:
-
 
 # Experiments
 
