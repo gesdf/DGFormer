@@ -9,7 +9,7 @@ This code is based on the [spatial-relation-benchmark](https://github.com/AlvinW
 First clone our repository by 
 
 ```
-git clone git@github.com:gesdf/DGFormer.git
+git clone git@anonymous.4open.science:r/DGFormer-68D4.git
 ```
 
 ## Installation
